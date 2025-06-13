@@ -1,0 +1,26 @@
+from collections import Counter 
+import string
+
+def get_most_frequent_words(filename, top_n=5):
+    try:
+        with open(filename, 'r') as file:
+            text = file.read()
+
+        text = text.lower()
+        text = text.translate(str.maketrans('', '', string.punctuation))  # Fixed: maketrans instead of markstrans
+
+        words = text.split()
+        word_counts = Counter(words)  # Fixed: consistent variable name (word_counts)
+
+        most_common = word_counts.most_common(top_n)  # Fixed: correct method and call
+
+        print(f"\nTop {top_n} most frequent words in '{filename}':")
+        for word, count in most_common:  # Fixed: correct loop variable names
+            print(f"{word}: {count} times")
+
+    except FileNotFoundError:
+        print(f"Error: File '{filename}' not found.")  # Fixed spacing and formatting
+
+# Get filename input from user
+filename = input("Enter the filename (e.g., sample.txt): ")
+get_most_frequent_words(filename, top_n=5)
