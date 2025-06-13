@@ -1,0 +1,11 @@
+import matplotlib.pyplot as plt
+x = [0, 10]  
+y = [0, 10]  
+plt.plot(x, y, label='Line from (0,0) to (10,10)', color='blue')
+
+plt.title('Simple Line using Matplotlib')
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.legend()
+plt.grid(True)
+plt.show()
